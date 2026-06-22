@@ -72,7 +72,7 @@ export function createBlockquoteRenderer(
 	const stripped = stripAlertMarker(firstToken as Tokens.Paragraph);
 	const allTokens = [...stripped, ...restTokens];
 
-	const body = parser.parse(allTokens);
+	const body = parser.parse(allTokens).trimEnd();
 	const icon = getAlertIconSvg(alertType);
 
 	if (options.inlineStyles) {
