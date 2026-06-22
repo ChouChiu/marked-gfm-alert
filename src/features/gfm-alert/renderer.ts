@@ -78,7 +78,7 @@ export function createBlockquoteRenderer(
 	if (options.inlineStyles) {
 		const colors = INLINE_COLORS[alertType];
 		const inlineIcon = getAlertIconSvgInline(alertType);
-		return `<div style="border-left:0.25em solid ${colors.border};color:inherit;margin-bottom:16px;padding:0.5rem 1em" dir="auto">\n<p style="align-items:center;display:flex;font-size:14px;font-weight:500;line-height:1;color:${colors.title}" dir="auto">${inlineIcon}${alertType}</p>\n${body}</div>`;
+		return `<div style="border-left:0.25em solid ${colors.border};color:inherit;margin-bottom:16px;padding:0.5rem 1em;overflow:hidden" dir="auto">\n<p style="align-items:center;display:flex;font-size:14px;font-weight:500;line-height:1;color:${colors.title}" dir="auto">${inlineIcon}${alertType}</p>\n${body}</div>`;
 	}
 
 	const classNames = buildClassNames(alertType, options.className);
