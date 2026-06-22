@@ -47,6 +47,8 @@ Output:
 
 ## Styling
 
+### Option 1: Import CSS (Recommended)
+
 Import the provided CSS to match GitHub's alert appearance:
 
 ```ts
@@ -61,6 +63,34 @@ Or add it to your HTML:
 
 The CSS uses `prefers-color-scheme` to switch between light and dark themes automatically.
 
+### Option 2: Inline Styles
+
+If you prefer not to import a CSS file, enable `inlineStyles` mode. This outputs all styling directly on the HTML elements:
+
+```ts
+marked.use(gfmAlert({ inlineStyles: true }));
+```
+
+Output:
+
+```html
+<div style="border-left:0.25em solid #0969da;color:inherit;padding:0.5rem 1em;overflow:hidden" dir="auto">
+  <p style="align-items:center;display:flex;font-size:14px;font-weight:500;line-height:1;color:#0969da" dir="auto">
+    <svg style="margin-right:8px;fill:currentColor" ...>...</svg>
+    NOTE
+  </p>
+  <p>Useful information that users should know, even when skimming content.</p>
+</div>
+```
+
+> **Note:** The browser's default `<p>` margin creates extra space below the alert. Add the following override to your stylesheet to remove the last child's margin:
+
+```css
+div[style*="border-left:0.25em"] > :last-child {
+  margin-bottom: 0 !important;
+}
+```
+
 ## Options
 
 Pass an options object to `gfmAlert()` to customize behavior:
@@ -74,6 +104,7 @@ marked.use(gfmAlert({
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `className` | `string` | `""` | Extra CSS class names appended to the alert container. |
+| `inlineStyles` | `boolean` | `false` | Output inline styles instead of CSS classes. Eliminates the need to import `alert.css`. |
 
 ### Custom class example
 
