@@ -1,5 +1,8 @@
 # marked-gfm-alert
 
+[![npm version](https://img.shields.io/npm/v/marked-gfm-alert.svg)](https://www.npmjs.com/package/marked-gfm-alert)
+[![license](https://img.shields.io/npm/l/marked-gfm-alert.svg)](https://github.com/ChouChiu/marked-gfm-alert/blob/main/LICENSE)
+
 A [marked](https://github.com/markedjs/marked) extension that adds [GitHub Flavored Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) blockquote alert support. Renders `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, and `> [!CAUTION]` into styled alert boxes with octicon icons.
 
 ## Installation
