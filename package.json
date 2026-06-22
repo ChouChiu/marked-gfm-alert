@@ -1,0 +1,60 @@
+{
+  "name": "marked-gfm-alert",
+  "version": "1.0.0",
+  "description": "Marked extension to support GitHub Flavored Markdown blockquote alerts (NOTE, TIP, IMPORTANT, WARNING, CAUTION).",
+  "author": "ChouChiu <lshengevery@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChouChiu/marked-gfm-alert.git"
+  },
+  "homepage": "https://github.com/ChouChiu/marked-gfm-alert#readme",
+  "bugs": {
+    "url": "https://github.com/ChouChiu/marked-gfm-alert/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./alert.css": "./alert.css"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "alert.css"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "biome check src/",
+    "format": "biome check src/ --write",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "marked",
+    "marked-extension",
+    "github",
+    "gfm",
+    "alert",
+    "blockquote",
+    "markdown"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "marked": ">=1.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.0",
+    "@types/bun": "latest",
+    "bun-types": "latest",
+    "marked": "^15.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "~6.0"
+  }
+}
