@@ -15,3 +15,8 @@ export function getAlertIconSvg(type: AlertType): string {
 	const d = pathData[type] ?? "";
 	return `<svg class="octicon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="${d}"></path></svg>`;
 }
+
+export function getAlertIconSvgInline(type: AlertType): string {
+	const d = pathData[type] ?? "";
+	return `<svg style="margin-right:8px;fill:currentColor" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="${d}"></path></svg>`;
+}

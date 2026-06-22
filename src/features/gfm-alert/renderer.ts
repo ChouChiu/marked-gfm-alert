@@ -1,8 +1,16 @@
 import type { Token, Tokens } from "marked";
-import { getAlertIconSvg } from "./icons.js";
+import { getAlertIconSvg, getAlertIconSvgInline } from "./icons.js";
 import type { AlertType, GfmAlertOptions } from "./types.js";
 
 const ALERT_REGEX = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i;
+
+const INLINE_COLORS: Record<AlertType, { border: string; title: string }> = {
+	NOTE: { border: "#0969da", title: "#0969da" },
+	TIP: { border: "#1f883d", title: "#1a7f37" },
+	IMPORTANT: { border: "#8957e5", title: "#8250df" },
+	WARNING: { border: "#9e6a03", title: "#9a6700" },
+	CAUTION: { border: "#cf222e", title: "#d1242f" },
+};
 
 function isAlertParagraph(token: Token): token is Tokens.Paragraph {
 	if (token.type !== "paragraph") return false;
@@ -65,8 +73,14 @@ export function createBlockquoteRenderer(
 	const allTokens = [...stripped, ...restTokens];
 
 	const body = parser.parse(allTokens);
-	const classNames = buildClassNames(alertType, options.className);
 	const icon = getAlertIconSvg(alertType);
 
+	if (options.inlineStyles) {
+		const colors = INLINE_COLORS[alertType];
+		const inlineIcon = getAlertIconSvgInline(alertType);
+		return `<div style="border-left:0.25em solid ${colors.border};color:inherit;margin-bottom:16px;padding:0.5rem 1em" dir="auto">\n<p style="align-items:center;display:flex;font-size:14px;font-weight:500;line-height:1;color:${colors.title}" dir="auto">${inlineIcon}${alertType}</p>\n${body}</div>\n`;
+	}
+
+	const classNames = buildClassNames(alertType, options.className);
 	return `<div class="${classNames}" dir="auto">\n<p class="markdown-alert-title" dir="auto">${icon}${alertType}</p>\n${body}</div>\n`;
 }

@@ -19,4 +19,6 @@ Always run `lint` then `typecheck` then `test` before considering work complete.
 - Tests: `bun:test` — see `test/index.test.ts` for patterns.
 - Exports: single entry `src/index.ts`, built to `dist/` (ESM + CJS + `.d.ts`).
 - CSS: `alert.css` at root is shipped separately via `exports["./alert.css"]`.
-- TypeScript: strict mode, `verbatimModuleSyntax`, `noUncheckedIndexedAccess`.
+- TypeScript: strict mode, `verbatimModuleSyntax`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`.
+- Peer dependency: `marked >=1.0.0` (dev uses ^15.0.0).
+- Lint scope: `bun run lint` only checks `src/` (not tests).

@@ -99,4 +99,14 @@ describe("gfmAlert", () => {
 		expect(html).toContain("<blockquote>");
 		expect(html).not.toContain("markdown-alert");
 	});
+
+	it("renders inline styles when inlineStyles is true", () => {
+		const md = `> [!NOTE]\n> Inline style test.`;
+		const html = parse(md, { inlineStyles: true });
+		expect(html).toContain('style="border-left:0.25em solid #0969da;color:inherit;margin-bottom:16px;padding:0.5rem 1em"');
+		expect(html).toContain('style="align-items:center;display:flex;font-size:14px;font-weight:500;line-height:1;color:#0969da"');
+		expect(html).toContain('style="margin-right:8px;fill:currentColor"');
+		expect(html).not.toContain("markdown-alert");
+		expect(html).toContain("Inline style test.");
+	});
 });
